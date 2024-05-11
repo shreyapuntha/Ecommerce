@@ -68,9 +68,9 @@
         @include square(3rem);
         border-radius: 100%;
         border: none;
-        // background-color: $color3;
+        background-color: $color3;
         cursor: pointer;
-        // color: $color1;
+        color: $color1;
         font-size: 1.1rem;
         transition: all 0.3s;
         &:hover {
