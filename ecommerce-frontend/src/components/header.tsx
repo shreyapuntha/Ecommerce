@@ -15,10 +15,13 @@ import { useState } from "react";
 interface PropsType {
   user: any;
 }
-
+const user = { _id: "dssd", role: ""}
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const logoutHandler = () => {
+    setIsOpen(false)
+  }
   //   const logoutHandler = async () => {
 //     try {
 //       await signOut(auth);
@@ -41,7 +44,7 @@ const Header = () => {
         <FaShoppingBag />
       </Link>
 
-      {/* {user?._id ? (
+      {user?._id ? (
         <>
           <button onClick={() => setIsOpen((prev) => !prev)}>
             <FaUser />
@@ -63,12 +66,12 @@ const Header = () => {
             </div>
           </dialog>
         </>
-      ) :  */}
+      ) : 
       
-        <Link to={"/login"}>
+        (<Link to={"/login"}>
           <FaSignInAlt />
         </Link>
-      
+      )}
     </nav>
   );
 };
