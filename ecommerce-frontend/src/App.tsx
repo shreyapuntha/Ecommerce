@@ -1,10 +1,13 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import { Suspense, lazy } from "react";
 import Loader from "./components/loader";
+import Header from "./components/header";
+
 // lazy loading so that the pages are loaded when in that route and not all together  atonce in the beginning
 const Home = lazy(()=> import("./pages/home"));
 const Search = lazy(()=> import("./pages/search"));
 const Cart = lazy(()=> import("./pages/cart"));
+const Shipping = lazy(()=> import("./pages/shipping"));
 
 // admin routes
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
@@ -28,12 +31,17 @@ const TransactionManagement = lazy(
 const App = () =>{
     return <Router>
         {/* header */}
+        <Header />
         {/* suspense fallback so that while a page is loading and not yet loaded show loader */}
         <Suspense fallback={<Loader/>}> 
             <Routes>
-                <Route path="/" element={<Home/>}></Route>
-                <Route path="/search" element={<Search/>}></Route>
-                <Route path="/cart" element={<Cart/>}></Route>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/search" element={<Search/>}/>
+                <Route path="/cart" element={<Cart/>}/>
+                {/* loggedin user routes */}
+                <Route>
+                  <Route path="/shipping" element={<Shipping/>}/>
+                </Route>
 
                 {/*  admin routes */}
                 {/* protected route so that only admin can access it */}
